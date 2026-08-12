@@ -1,0 +1,17 @@
+# Core LLM + Embeddings
+openai>=1.30.0
+
+# Vector store
+chromadb>=0.5.0
+
+# PDF extraction
+pymupdf>=1.24.0          # fitz — faster and more accurate than pypdf for structured financial docs
+
+# Text splitting (slim standalone package, no full LangChain required)
+langchain-text-splitters>=0.2.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# UI
+streamlit>=1.35.0
