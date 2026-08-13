@@ -49,14 +49,34 @@ python test_setup.py
 **Objective:** Scaffold the project and confirm OpenAI API connectivity.
 
 Checklist:
-- [ ] `requirements.txt` created
-- [ ] `.gitignore` created (covers `.env`, `venv/`, `chroma_db/`, `__pycache__/`)
-- [ ] `.env.example` created
-- [ ] `src/` and `data/` directories created
-- [ ] `test_setup.py` runs successfully
-- [ ] Total models returned by API call: TODO
-- [ ] First model ID printed: TODO
+- [] `requirements.txt` created
+- [] `.gitignore` created (covers `.env`, `venv/`, `chroma_db/`, `__pycache__/`)
+- [] `.env.example` created
+- [] `src/` and `data/` directories created
+- [] `test_setup.py` runs successfully
+- [] Total models returned by API call: TODO
+- [] First model ID printed: TODO
 
 **Splitter choice:** `langchain-text-splitters` — provides
 `RecursiveCharacterTextSplitter` (paragraph → sentence → word fallback),
 battle-tested on messy PDF text without requiring the full LangChain stack.
+
+---
+
+### Stage 1 — PDF Extraction Check
+
+**Objective:** Verify all three Cisco quarterly PDFs have machine-readable text on every page before committing to an embedding strategy.
+
+Script: `src/check_pdfs.py`  
+Threshold: pages with fewer than 50 non-whitespace characters are flagged as empty.
+
+| File | Total Pages | Extractable Pages | Empty Pages |
+|---|---|---|---|
+| Cisco_Q1_FY26.pdf | TODO | TODO | TODO |
+| Cisco_Q2_FY26.pdf | TODO | TODO | TODO |
+| Cisco_Q3_FY26.pdf | TODO | TODO | TODO |
+
+- [ ] All three PDFs present in `data/`
+- [ ] `python src/check_pdfs.py` runs without errors
+- [ ] Page counts recorded above
+- [ ] No pages flagged as empty/image-only (or OCR plan noted if any are)
