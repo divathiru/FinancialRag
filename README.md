@@ -80,6 +80,10 @@ Threshold: pages with fewer than 50 non-whitespace characters are flagged as emp
 - [DONE] `python src/check_pdfs.py` runs without errors
 - [DONE] Page counts recorded above
 - [DONE] No pages flagged as empty/image-only (or OCR plan noted if any are)
+<img width="801" height="550" alt="Screenshot from 2026-08-13 08-45-17" src="https://github.com/user-attachments/assets/a5a32f25-3edc-4c12-ad61-00860c1b8d47" />
+<img width="805" height="429" alt="Screenshot from 2026-08-13 08-45-35" src="https://github.com/user-attachments/assets/37ba09da-1ec6-477a-9f80-12e03ea86a13" />
+<img width="800" height="486" alt="Screenshot from 2026-08-13 08-45-49" src="https://github.com/user-attachments/assets/7ae96a8f-e2b5-44e9-844b-ba3d4af44e7f" />
+
 
 ---
 
