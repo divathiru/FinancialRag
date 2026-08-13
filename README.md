@@ -106,3 +106,28 @@ Public API: `extract_pages(pdf_path)` → `list[dict]` | `extract_all(data_dir)`
 - [DONE] Each dict confirmed to have `file`, `page`, and `text` keys
 - [DONE] Page 1 preview text looks correct for each file
 ![alt text](<Screenshot from 2026-08-13 09-03-01.png>) ![alt text](<Screenshot from 2026-08-13 09-03-16.png>) ![alt text](<Screenshot from 2026-08-13 09-03-36.png>)
+
+---
+
+### Stage 3 — Chunking & Size Comparison
+
+**Objective:** Split extracted pages into overlapping chunks using `RecursiveCharacterTextSplitter`, compare two chunk sizes, and pick one for Stage 4.
+
+Scripts: `src/chunk.py` (library) · `src/compare_chunk_sizes.py` (interactive CLI)  
+Overlap fixed at **150 chars** for both runs.
+
+| Setting | Total chunks |
+|---|---|
+| chunk_size=800 / overlap=150 | 215 |
+| chunk_size=1200 / overlap=150 | 143 |
+
+- **Chosen chunk_size:** 1200
+- **Justification:** 1200 captured the 90% of the CONDENSED CONSOLIDATED BALANCE SHEETS tables in one chunk; 800 split it
+
+Checklist:
+- [Done] `python src/compare_chunk_sizes.py` runs and prints chunk counts
+- [Done] 3 random samples printed for each config
+- [Done] Table-capture test run for a financial query
+- [Done] Chunk size decision recorded above with justification
+
+![alt text](<Screenshot from 2026-08-13 09-25-39.png>) ![alt text](<Screenshot from 2026-08-13 09-25-52.png>)
