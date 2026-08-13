@@ -80,3 +80,25 @@ Threshold: pages with fewer than 50 non-whitespace characters are flagged as emp
 - [DONE] `python src/check_pdfs.py` runs without errors
 - [DONE] Page counts recorded above
 - [DONE] No pages flagged as empty/image-only (or OCR plan noted if any are)
+
+---
+
+### Stage 2 — Text Extraction
+
+**Objective:** Extract raw text page-by-page from all three PDFs, preserving `file` and `page` metadata for future citation.
+
+Script: `src/extract.py`  
+Public API: `extract_pages(pdf_path)` → `list[dict]` | `extract_all(data_dir)` → flat list
+
+| File | Pages extracted |
+|---|---|
+| Cisco_Q1_FY26.pdf | 15 |
+| Cisco_Q2_FY26.pdf | 16 |
+| Cisco_Q3_FY26.pdf | 16 |
+| **Total** | **47** |
+
+- [DONE] `python src/extract.py` runs without errors
+- [DONE] Page counts match Stage 1 results (15 / 16 / 16)
+- [DONE] Each dict confirmed to have `file`, `page`, and `text` keys
+- [DONE] Page 1 preview text looks correct for each file
+![alt text](<Screenshot from 2026-08-13 09-03-01.png>) ![alt text](<Screenshot from 2026-08-13 09-03-16.png>) ![alt text](<Screenshot from 2026-08-13 09-03-36.png>)
