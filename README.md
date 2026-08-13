@@ -72,11 +72,11 @@ Threshold: pages with fewer than 50 non-whitespace characters are flagged as emp
 
 | File | Total Pages | Extractable Pages | Empty Pages |
 |---|---|---|---|
-| Cisco_Q1_FY26.pdf | TODO | TODO | TODO |
-| Cisco_Q2_FY26.pdf | TODO | TODO | TODO |
-| Cisco_Q3_FY26.pdf | TODO | TODO | TODO |
+| Cisco_Q1_FY26.pdf | 15 | 15 | 0 |
+| Cisco_Q2_FY26.pdf | 16 | 16 | 0 |
+| Cisco_Q3_FY26.pdf | 16 | 16 | 0 |
 
-- [ ] All three PDFs present in `data/`
-- [ ] `python src/check_pdfs.py` runs without errors
-- [ ] Page counts recorded above
-- [ ] No pages flagged as empty/image-only (or OCR plan noted if any are)
+- [DONE] All three PDFs present in `data/`
+- [DONE] `python src/check_pdfs.py` runs without errors
+- [DONE] Page counts recorded above
+- [DONE] No pages flagged as empty/image-only (or OCR plan noted if any are)
