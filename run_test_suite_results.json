@@ -1,0 +1,737 @@
+[
+  {
+    "id": 1,
+    "topic": "Revenue in the latest quarter",
+    "question": "What was Cisco's total revenue for Q3 FY25 (the quarter ended April 26, 2025), and how did it break down between product and services?",
+    "answer": "Total revenue was $14.1 billion for Q3 FY25, with product revenue of $11.7 billion and services revenue of $2.4 billion.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 5,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 5,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q1 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 1.9250173568725586,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.088749,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 5,
+        "distance": 0.09496,
+        "preview": "[Cisco Q2 FY25] 5  CISCO SYSTEMS, INC.  CONSOLIDATED STATEMENTS OF OPERATIONS  (In millions, except per-share amounts)   (Unaudited)   Three Months Ended  Six Months Ended  January 25,  2025    Januar"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 5,
+        "distance": 0.095523,
+        "preview": "[Cisco Q1 FY25] 5  CISCO SYSTEMS, INC.  CONSOLIDATED STATEMENTS OF OPERATIONS  (In millions, except per-share amounts)   (Unaudited)   Three Months Ended  October 26,  2024  October 28,  2023  REVENUE"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.096303,
+        "preview": "[Cisco Q2 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q2 FY 2025 Highlights   Revenue -- Total revenue was $14.0 billion, up 9%, with"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.097548,
+        "preview": "[Cisco Q1 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q1 FY 2025 Highlights   Revenue -- Total revenue was $13.8 billion, down 6%, wi"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "topic": "Net profit compared across quarters",
+    "question": "How did Cisco's GAAP net income compare across Q1, Q2, and Q3 FY25?",
+    "answer": "Cisco's GAAP net income was:\n- $2.711 billion for Q1 FY25\n- $2.428 billion for Q2 FY25\n- $2.491 billion for Q3 FY25",
+    "sources": [
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 10,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 10,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 12,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 10,
+        "quarter": "Q3 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 1.6392631530761719,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 10,
+        "distance": 0.099694,
+        "preview": "[Cisco Q1 FY25] 10  CISCO SYSTEMS, INC.  RECONCILIATIONS OF GAAP TO NON-GAAP MEASURES    GAAP TO NON-GAAP NET INCOME  (In millions)     Three Months Ended     October 26,  2024  October 28,  2023  GAA"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.101663,
+        "preview": "[Cisco Q3 FY25] Operating Expenses -- On a GAAP basis, operating expenses were $6.1 billion, flat year over year, and were 42.9% of revenue.  Non-GAAP operating expenses were $4.8 billion, up 12%, and"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 10,
+        "distance": 0.103416,
+        "preview": "[Cisco Q2 FY25] 10  CISCO SYSTEMS, INC.  RECONCILIATIONS OF GAAP TO NON-GAAP MEASURES    GAAP TO NON-GAAP NET INCOME  (In millions)     Three Months Ended    Six Months Ended     January 25,  2025  Ja"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 12,
+        "distance": 0.103614,
+        "preview": "[Cisco Q1 FY25] 12  CISCO SYSTEMS, INC.  RECONCILIATIONS OF GAAP TO NON-GAAP MEASURES    GROSS MARGINS, OPERATING EXPENSES, OPERATING MARGINS, INTEREST AND OTHER INCOME (LOSS), NET, AND  NET INCOME  ("
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 10,
+        "distance": 0.105089,
+        "preview": "[Cisco Q3 FY25] 10  CISCO SYSTEMS, INC.  RECONCILIATIONS OF GAAP TO NON-GAAP MEASURES    GAAP TO NON-GAAP NET INCOME  (In millions)     Three Months Ended  Nine Months Ended     April 26,  2025 April "
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "topic": "Year-on-year revenue comparison",
+    "question": "How did Cisco's total revenue for Q3 FY25 compare to Q3 FY24 on a year-over-year basis?",
+    "answer": "Cisco's total revenue for Q3 FY25 was $14.1 billion, up 11% year-over-year compared to Q3 FY24.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "quarter": "Q1 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 1.5364060401916504,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.095017,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.111332,
+        "preview": "[Cisco Q2 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q2 FY 2025 Highlights   Revenue -- Total revenue was $14.0 billion, up 9%, with"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.111893,
+        "preview": "[Cisco Q1 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q1 FY 2025 Highlights   Revenue -- Total revenue was $13.8 billion, down 6%, wi"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.112712,
+        "preview": "[Cisco Q1 FY25] 6  CISCO SYSTEMS, INC.  REVENUE BY SEGMENT  (In millions, except percentages)  Three Months Ended  October 26, 2024  Amount  Y/Y %  Revenue:  Americas ................................."
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.115206,
+        "preview": "[Cisco Q3 FY25] Operating Expenses -- On a GAAP basis, operating expenses were $6.1 billion, flat year over year, and were 42.9% of revenue.  Non-GAAP operating expenses were $4.8 billion, up 12%, and"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "topic": "Management commentary on demand",
+    "question": "What did Cisco's management say about customer demand trends and order momentum in the FY25 earnings releases?",
+    "answer": "Cisco's management reported the following about customer demand trends and order momentum in the FY25 earnings releases:\n\n- **Q1 FY25**: Product orders up 20% year over year; up 9% year over year excluding Splunk, reflecting broad-based acceleration in product orders and normalizing demand.\n- **Q2 FY25**: Product orders up 29% year over year; up 11% excluding Splunk, demonstrating growing demand for Cisco technologies.\n- **Q3 FY25**: Product orders up 20% year over year; up 9% excluding Splunk, with growth across all geographies and customer markets. AI Infrastructure orders from webscale customers exceeded $600 million, surpassing the $1 billion target one quarter early.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 1,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 1,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 1,
+        "quarter": "Q3 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 2.1370644569396973,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "distance": 0.150023,
+        "preview": "[Cisco Q3 FY25] and economic conditions and growth trends in the networking industry, our customer markets and various geographic regions;  global economic conditions and uncertainties in the geopolit"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 1,
+        "distance": 0.150702,
+        "preview": "[Cisco Q2 FY25] 1      Press Contact:  Investor Relations Contact:  Robyn Blum  Sami Badri  Cisco  Cisco  1 (408) 930-8548  1 (469) 420-4834  rojenkin@cisco.com  sambadri@cisco.com  CISCO REPORTS SECO"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "distance": 0.151092,
+        "preview": "[Cisco Q3 FY25] 15    Forward Looking Statements, Non-GAAP Information and Additional Information  This release may be deemed to contain forward-looking statements, which are subject to the safe harbo"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 1,
+        "distance": 0.153505,
+        "preview": "[Cisco Q1 FY25] 1      Press Contact:  Investor Relations Contact:  Robyn Blum  Sami Badri  Cisco  Cisco  1 (408) 930-8548  1 (469) 420-4834  rojenkin@cisco.com  sambadri@cisco.com  CISCO REPORTS FIRS"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 1,
+        "distance": 0.155708,
+        "preview": "[Cisco Q3 FY25] 1      Press Contact:  Investor Relations Contact:  Robyn Blum  Sami Badri  Cisco  Cisco  1 (408) 930-8548  1 (469) 420-4834  rojenkin@cisco.com  sambadri@cisco.com  CISCO REPORTS THIR"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "topic": "Fastest-growing segment",
+    "question": "Which Cisco product category or technology platform showed the fastest revenue growth in FY25 (across Q1, Q2, and Q3)?",
+    "answer": "Security showed the fastest revenue growth in FY25:\n\n- **100% growth for Q1 FY25**\n- **117% growth for Q2 FY25**\n- **54% growth for Q3 FY25**",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 6,
+        "quarter": "Q2 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 1.7521777153015137,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.141159,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.145275,
+        "preview": "[Cisco Q2 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q2 FY 2025 Highlights   Revenue -- Total revenue was $14.0 billion, up 9%, with"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.147405,
+        "preview": "[Cisco Q1 FY25] 69.6%  EMEA ............................................................................................................................................... 70.3%  APJC ................"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.148232,
+        "preview": "[Cisco Q1 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q1 FY 2025 Highlights   Revenue -- Total revenue was $13.8 billion, down 6%, wi"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.148407,
+        "preview": "[Cisco Q2 FY25] 67.6%  68.6%  EMEA ...................................................................................................... 71.3%  70.8%  APJC ..........................................."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "topic": "Operating margin trend",
+    "question": "How did Cisco's GAAP operating margin change from Q1 FY25 to Q2 FY25 to Q3 FY25?",
+    "answer": "The provided context does not contain enough information to answer this question.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 5,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 12,
+        "quarter": "Q3 FY25"
+      }
+    ],
+    "tag": "\u26a0\ufe0f  REFUSED (check chunks below)",
+    "elapsed": 1.4340450763702393,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.109357,
+        "preview": "[Cisco Q3 FY25] Operating Expenses -- On a GAAP basis, operating expenses were $6.1 billion, flat year over year, and were 42.9% of revenue.  Non-GAAP operating expenses were $4.8 billion, up 12%, and"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.112583,
+        "preview": "[Cisco Q2 FY25] respectively, as compared with 66.7%, 65.2%, and 70.5%, respectively, in the second quarter of fiscal 2024.  Total gross margins by geographic segment were: 67.6% for the Americas, 71."
+      },
+      {
+        "rank": 3,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 5,
+        "distance": 0.115547,
+        "preview": "[Cisco Q2 FY25] 4,574    9,600     9,685   GROSS MARGIN ...............................................................................  9,111    8,217    18,232     17,774   OPERATING EXPENSES:      "
+      },
+      {
+        "rank": 4,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.118918,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 12,
+        "distance": 0.120418,
+        "preview": "[Cisco Q3 FY25] 12  CISCO SYSTEMS, INC.  RECONCILIATIONS OF GAAP TO NON-GAAP MEASURES    GROSS MARGINS, OPERATING EXPENSES, OPERATING MARGINS, INTEREST AND OTHER INCOME (LOSS), NET, AND  NET INCOME  ("
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "topic": "Dividend declared",
+    "question": "What quarterly cash dividend per share did Cisco declare in Q3 FY25, and how did it compare to the dividend declared in Q3 FY24?",
+    "answer": "The provided context does not contain enough information to answer this question.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 2,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 2,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 2,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 9,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q1 FY25"
+      }
+    ],
+    "tag": "\u26a0\ufe0f  REFUSED (check chunks below)",
+    "elapsed": 1.4317922592163086,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 2,
+        "distance": 0.085922,
+        "preview": "[Cisco Q3 FY25] 2       GAAP Results  Q3 FY 2025 Q3 FY 2024 Vs. Q3 FY 2024 Revenue  $  14.1  billion $  12.7  billion  11%  Net Income  $  2.5  billion $  1.9  billion  32%  Diluted Earnings per Share"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 2,
+        "distance": 0.106069,
+        "preview": "[Cisco Q1 FY25] 2       GAAP Results  Q1 FY 2025  Q1 FY 2024  Vs. Q1 FY 2024  Revenue  $  13.8  billion $  14.7  billion  (6)%  Net Income  $  2.7  billion $  3.6  billion  (25)%  Diluted Earnings per"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 2,
+        "distance": 0.109341,
+        "preview": "[Cisco Q2 FY25] 2       GAAP Results  Q2 FY 2025  Q2 FY 2024  Vs. Q2 FY 2024  Revenue  $  14.0  billion $  12.8  billion  9%  Net Income  $  2.4  billion $  2.6  billion  (8)%  Diluted Earnings per Sh"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 9,
+        "distance": 0.113032,
+        "preview": "[Cisco Q1 FY25] 14,561    15,256    13,970   Total .......................................................................................................$  27,502  $  28,475  $  25,659   Reported as:"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.114063,
+        "preview": "[Cisco Q1 FY25] dividends. We declared and paid a cash dividend of $0.40 per common share, or $1.6 billion, and repurchased approximately 40  million shares of common stock under our stock repurchase "
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "topic": "Risks and headwinds",
+    "question": "What business risks, macro headwinds, or forward-looking cautions did Cisco highlight in its FY25 quarterly earnings press releases?",
+    "answer": "The provided context does not contain enough information to answer this question.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 15,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 14,
+        "quarter": "Q1 FY25"
+      }
+    ],
+    "tag": "\u26a0\ufe0f  REFUSED (check chunks below)",
+    "elapsed": 1.4355723857879639,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "distance": 0.119582,
+        "preview": "[Cisco Q3 FY25] 15    Forward Looking Statements, Non-GAAP Information and Additional Information  This release may be deemed to contain forward-looking statements, which are subject to the safe harbo"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 15,
+        "distance": 0.122558,
+        "preview": "[Cisco Q2 FY25] 15    Forward Looking Statements, Non-GAAP Information and Additional Information  This release may be deemed to contain forward-looking statements, which are subject to the safe harbo"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 14,
+        "distance": 0.122826,
+        "preview": "[Cisco Q1 FY25] 14    Forward Looking Statements, Non-GAAP Information and Additional Information  This release may be deemed to contain forward-looking statements, which are subject to the safe harbo"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 14,
+        "distance": 0.126654,
+        "preview": "[Cisco Q1 FY25] change); any pandemic or epidemic; our ability to achieve the benefits anticipated from our investments in sales, engineering,  service, marketing and manufacturing activities; our abi"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 15,
+        "distance": 0.129285,
+        "preview": "[Cisco Q3 FY25] epidemic; our ability to achieve the benefits anticipated from our investments in sales, engineering, service, marketing and  manufacturing activities; our ability to recruit and retai"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "topic": "Three-line summary",
+    "question": "Give a three-sentence executive summary of Cisco's overall financial performance across Q1, Q2, and Q3 FY25, covering revenue, profit, and any notable strategic highlights.",
+    "answer": "Cisco's total revenue increased sequentially from $13.8 billion in Q1 FY25 to $14.0 billion in Q2 FY25 and $14.1 billion in Q3 FY25. Operating income rose from $3.2 billion in Q1 FY25 to $3.2 billion in Q2 FY25 and $3.2 billion in Q3 FY25. Strategic highlights included strong growth in Security and Observability product revenue across all three quarters.",
+    "sources": [
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 5,
+        "quarter": "Q3 FY25"
+      },
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 5,
+        "quarter": "Q1 FY25"
+      }
+    ],
+    "tag": "\u2705 ANSWERED",
+    "elapsed": 2.0237903594970703,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.10279,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.108567,
+        "preview": "[Cisco Q2 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q2 FY 2025 Highlights   Revenue -- Total revenue was $14.0 billion, up 9%, with"
+      },
+      {
+        "rank": 3,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.109737,
+        "preview": "[Cisco Q1 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q1 FY 2025 Highlights   Revenue -- Total revenue was $13.8 billion, down 6%, wi"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 5,
+        "distance": 0.120163,
+        "preview": "[Cisco Q3 FY25] 5  CISCO SYSTEMS, INC.  CONSOLIDATED STATEMENTS OF OPERATIONS  (In millions, except per-share amounts)   (Unaudited)   Three Months Ended  Nine Months Ended  April 26,  2025  April 27,"
+      },
+      {
+        "rank": 5,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 5,
+        "distance": 0.123739,
+        "preview": "[Cisco Q1 FY25] 5  CISCO SYSTEMS, INC.  CONSOLIDATED STATEMENTS OF OPERATIONS  (In millions, except per-share amounts)   (Unaudited)   Three Months Ended  October 26,  2024  October 28,  2023  REVENUE"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "topic": "Trap \u2014 must be refused",
+    "question": "What was the exact breakdown of Cisco's global headcount by country and business unit at the end of FY2020, and how did voluntary attrition rates differ by region?",
+    "answer": "The provided context does not contain enough information to answer this question.",
+    "sources": [
+      {
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "quarter": "Q1 FY25"
+      },
+      {
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 6,
+        "quarter": "Q2 FY25"
+      },
+      {
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "quarter": "Q3 FY25"
+      }
+    ],
+    "tag": "\u2705 PASS \u2014 correctly REFUSED",
+    "elapsed": 1.455845594406128,
+    "chunks_summary": [
+      {
+        "rank": 1,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.173923,
+        "preview": "[Cisco Q1 FY25] 69.6%  EMEA ............................................................................................................................................... 70.3%  APJC ................"
+      },
+      {
+        "rank": 2,
+        "quarter": "Q1 FY25",
+        "file": "Q1FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.175822,
+        "preview": "[Cisco Q1 FY25] 6  CISCO SYSTEMS, INC.  REVENUE BY SEGMENT  (In millions, except percentages)  Three Months Ended  October 26, 2024  Amount  Y/Y %  Revenue:  Americas ................................."
+      },
+      {
+        "rank": 3,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.181718,
+        "preview": "[Cisco Q2 FY25] 6  CISCO SYSTEMS, INC.  REVENUE BY SEGMENT  (In millions, except percentages)  January 25, 2025  Three Months Ended  Six Months Ended  Amount  Y/Y %  Amount    Y/Y %  Revenue:  America"
+      },
+      {
+        "rank": 4,
+        "quarter": "Q2 FY25",
+        "file": "Q2FY25-Press-Release.pdf",
+        "page": 6,
+        "distance": 0.182294,
+        "preview": "[Cisco Q2 FY25] 67.6%  68.6%  EMEA ...................................................................................................... 71.3%  70.8%  APJC ..........................................."
+      },
+      {
+        "rank": 5,
+        "quarter": "Q3 FY25",
+        "file": "Q3FY25-Press-Release.pdf",
+        "page": 3,
+        "distance": 0.182933,
+        "preview": "[Cisco Q3 FY25] 3  Financial Summary  All comparative percentages are on a year-over-year basis unless otherwise noted.  Q3 FY 2025 Highlights   Revenue -- Total revenue was $14.1 billion, up 11%, wit"
+      }
+    ]
+  }
+]
