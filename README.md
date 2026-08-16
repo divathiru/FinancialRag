@@ -425,3 +425,63 @@ uploaded files → tempfile.TemporaryDirectory
 - [DONE] Each answer shows sources as coloured badges (file · page grouped by quarter)
 - [DONE] History list: newest on top, each entry in a collapsible expander
 - [DONE] Server started: HTTP 200 confirmed at `http://localhost:8501`
+
+---
+
+### Stage 10 — FastAPI Backend
+
+**Objective:** Expose the RAG pipeline as a REST API without touching `streamlit_app.py`.
+
+Scripts: `src/api.py` (new) · `requirements.txt` updated
+
+Run: `uvicorn src.api:app --port 8000 --reload`  
+Docs: `http://localhost:8000/docs`
+
+#### Endpoints
+
+| Method | Path | Request | Response |
+|---|---|---|---|
+| `POST` | `/index` | `multipart/form-data` — field `files` (one or more PDFs) | `{"files_indexed": N, "chunks_created": N}` |
+| `POST` | `/ask` | `{"question": str, "top_k": int}` | `{"answer": str, "sources": [{file, page, quarter}, …]}` |
+| `GET` | `/stats` | — | `{"collection_name", "chunk_count", "embedding_model", "generation_model"}` |
+
+#### Pydantic schemas
+
+| Schema | Fields |
+|---|---|
+| `IndexResponse` | `files_indexed: int`, `chunks_created: int` |
+| `AskRequest` | `question: str`, `top_k: int (1–20, default 5)` |
+| `AskResponse` | `answer: str`, `sources: list[SourceItem]` |
+| `SourceItem` | `file: str`, `page: int`, `quarter: str` |
+| `StatsResponse` | `collection_name`, `chunk_count`, `embedding_model`, `generation_model` |
+
+#### New dependencies added to `requirements.txt`
+
+```
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+```
+
+#### Smoke test — `GET /stats` (live, before any new upload)
+
+```json
+{
+  "collection_name": "cisco_financials",
+  "chunk_count": 143,
+  "embedding_model": "mistral-embed",
+  "generation_model": "mistral-small-latest"
+}
+```
+
+#### Checklist
+
+- [DONE] `src/api.py` written — no logic reimplemented inline
+- [DONE] All three endpoints registered and visible at `/docs`
+- [DONE] Pydantic schemas for all request/response bodies
+- [DONE] Single shared `Mistral` client via FastAPI `lifespan` context manager
+- [DONE] `/ask` returns `HTTP 400` with clear message if collection is empty
+- [DONE] `/index` validates that all uploads are PDFs before processing
+- [DONE] `GET /stats` tested — returns correct live values
+- [DONE] `fastapi`, `uvicorn[standard]`, `python-multipart` added to `requirements.txt`
+- [DONE] `POST /index` and `POST /ask` — test via `/docs` (TODO: record results)
