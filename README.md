@@ -335,3 +335,38 @@ Temperature: `0.2`
 - [DONE] `debug=True` prints exact prompt before API call
 - [DONE] End-to-end test run: answer is factually correct and traceable to source chunks
 - [DONE] `_print_side_by_side()` helper enables chunk-vs-answer fact checking
+
+---
+
+### Stage 8 — Sources & Manual Verification
+
+**Objective:** Expose a clean source-citation list alongside every answer, then run a 4-question verification suite (3 factual + 1 out-of-scope refusal).
+
+Scripts: `src/generate.py` updated · `src/verify_sample.py` (new)
+
+#### New public API in `generate.py`
+
+| Symbol | Type | Description |
+|---|---|---|
+| `answer_with_sources(question, chunks, ...)` | `dict` | Returns `{"answer": str, "sources": list[dict]}` |
+| `_extract_sources(chunks)` | `list[dict]` | Deduplicates on `(file, page)`, preserves rank order |
+
+Source dict keys: `file` · `page` · `quarter`
+
+#### `verify_sample.py` results (top_k = 5)
+
+| # | Question | Answer | Sources |
+|---|----------|--------|---------|
+| 1 | What was Cisco's total revenue for Q1 FY25? | $13.8 billion for Q1 FY25 | Q1 FY25: Q1FY25-Press-Release.pdf p.6 · p.3 · p.5 \| Q3 FY25: Q3FY25-Press-Release.pdf p.3 \| Q2 FY25: Q2FY25-Press-Release.pdf p.5 |
+| 2 | What was Cisco's GAAP net income for Q3 FY25? | Cisco's GAAP net income was $2.5 billion for Q3 FY25. | Q3 FY25: Q3FY25-Press-Release.pdf p.3 · p.2 · p.5 · p.12 \| Q1 FY25: Q1FY25-Press-Release.pdf p.10 |
+| 3 | How many shares did Cisco repurchase during Q2 FY25, and at what total cost? | Cisco repurchased approximately 21 million shares of common stock during Q2 FY25 at a total cost of $1.2 billion. | Q2 FY25: Q2FY25-Press-Release.pdf p.9 · p.8 · p.3 \| Q1 FY25: Q1FY25-Press-Release.pdf p.3 · p.9 |
+| 4 *(out-of-scope)* | What was Cisco's total R&D headcount broken down by country as of end of FY2023? | The provided context does not contain enough information to answer this question. | *(chunks retrieved but answer correctly refused)* |
+
+#### Checklist
+
+- [DONE] `answer_with_sources()` added to `generate.py` — no breaking changes to `answer()`
+- [DONE] `_extract_sources()` deduplicates on `(file, page)`, preserves relevance order
+- [DONE] `src/verify_sample.py` created — 3 in-scope + 1 out-of-scope question
+- [DONE] All 3 factual answers include unit + time period (grounding rules honoured)
+- [DONE] Out-of-scope question returns exact refusal string — no hallucination
+- [DONE] Markdown table rows printed to terminal for direct README paste

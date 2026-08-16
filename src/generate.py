@@ -1,5 +1,5 @@
 """
-src/generate.py — Stage 7: Answer generation via Mistral chat.
+src/generate.py — Stage 7 / 8: Answer generation via Mistral chat.
 
 Public API
 ----------
@@ -15,6 +15,22 @@ build_context(retrieved_chunks) -> str
 answer(question, retrieved_chunks, client=None, debug=False) -> str
     The main generation function.  Builds a four-part prompt, calls Mistral
     at temperature=0.2, and returns the model's answer string.
+
+answer_with_sources(question, retrieved_chunks, client=None, debug=False)
+    -> dict
+    Thin wrapper around answer().  Returns a dict with two keys:
+        {
+            "answer"  : str          — the generated answer text
+            "sources" : list[dict]   — deduplicated source citations
+        }
+    Each source dict:
+        {
+            "file"    : str   — PDF filename
+            "page"    : int   — 1-indexed page number
+            "quarter" : str   — e.g. "Q2 FY25"
+        }
+    Sources are deduplicated on (file, page) and ordered by first
+    appearance in the retrieved chunk list (i.e. by relevance rank).
 
     Rules enforced by the system prompt:
       1. Answer ONLY from the provided context — never from general knowledge.
@@ -175,6 +191,78 @@ def answer(
     )
 
     return response.choices[0].message.content.strip()
+
+
+# ── sources helper ────────────────────────────────────────────────────────────
+
+def _extract_sources(retrieved_chunks: list[dict]) -> list[dict]:
+    """
+    Build a deduplicated, ordered list of source citations from retrieved chunks.
+
+    Deduplication key: (file, page).  Order is preserved — the citation that
+    appeared earliest in the ranked list (closest cosine distance) comes first.
+
+    Parameters
+    ----------
+    retrieved_chunks : list[dict]
+        Output of retrieve.retrieve().
+
+    Returns
+    -------
+    list[dict]
+        Each dict: {"file": str, "page": int, "quarter": str}
+    """
+    seen: set[tuple] = set()
+    sources: list[dict] = []
+    for chunk in retrieved_chunks:
+        key = (chunk["file"], chunk["page"])
+        if key not in seen:
+            seen.add(key)
+            sources.append(
+                {
+                    "file":    chunk["file"],
+                    "page":    chunk["page"],
+                    "quarter": chunk["quarter"],
+                }
+            )
+    return sources
+
+
+def answer_with_sources(
+    question: str,
+    retrieved_chunks: list[dict],
+    client=None,
+    debug: bool = False,
+) -> dict:
+    """
+    Generate an answer and return it together with clean source citations.
+
+    This is the preferred entry-point for the app layer and verify scripts.
+    It calls answer() internally — all grounding rules and temperature settings
+    are inherited unchanged.
+
+    Parameters
+    ----------
+    question : str
+        The user's natural-language question.
+    retrieved_chunks : list[dict]
+        Output of retrieve.retrieve().
+    client : Mistral | None
+        Reuse an existing client, or create a fresh one.
+    debug : bool
+        Passed through to answer() — prints the full prompt when True.
+
+    Returns
+    -------
+    dict
+        {
+            "answer"  : str          — generated answer text
+            "sources" : list[dict]   — [{"file", "page", "quarter"}, ...]
+        }
+    """
+    generated = answer(question, retrieved_chunks, client=client, debug=debug)
+    sources   = _extract_sources(retrieved_chunks)
+    return {"answer": generated, "sources": sources}
 
 
 # ── debug helpers ─────────────────────────────────────────────────────────────
