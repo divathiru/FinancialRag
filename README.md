@@ -370,3 +370,58 @@ Source dict keys: `file` · `page` · `quarter`
 - [DONE] All 3 factual answers include unit + time period (grounding rules honoured)
 - [DONE] Out-of-scope question returns exact refusal string — no hallucination
 - [DONE] Markdown table rows printed to terminal for direct README paste
+
+---
+
+### Stage 9 — Streamlit Interface
+
+**Objective:** Build a full-stack Streamlit UI that wires together all pipeline modules without reimplementing their logic inline.
+
+Script: `streamlit_app.py` (project root)  
+Run: `streamlit run streamlit_app.py`
+
+#### Feature checklist
+
+| Feature | Implementation detail |
+|---|---|
+| PDF file uploader | `st.file_uploader(accept_multiple_files=True, type=["pdf"])` — sidebar |
+| Index button | Disabled when no files uploaded; triggers full extract→chunk→embed→store pipeline |
+| Indexing spinner | `st.spinner()` wraps the pipeline; intermediate status messages per step |
+| Question input | `st.text_input(disabled=not st.session_state.indexed)` — greyed out until indexed |
+| Pre-index gate | Amber warning box in main area: *"Nothing indexed yet"* — no crash path |
+| Answer area | Rendered in a gradient card with full answer text |
+| Sources area | Each source rendered as a green badge: `Quarter · filename · page(s)` |
+| Q&A history | `st.session_state.history` list, newest on top, each in an `st.expander` (latest expanded) |
+| Model reuse | Single `Mistral` client stored in `st.session_state.mistral_client` — not recreated per query |
+
+#### Indexing pipeline flow (in `_run_indexing()`)
+
+```
+uploaded files → tempfile.TemporaryDirectory
+  → extract_pages()   (src/extract.py)
+  → chunk_pages()     (src/chunk.py)   chunk_size=1200, overlap=150
+  → make_prefixed_text() + embed_chunks()  (src/store.py + src/embed.py)
+  → store_chunks()    (src/store.py)   upsert → ChromaDB
+```
+
+#### Server health check
+
+| Check | Result |
+|---|---|
+| `streamlit run streamlit_app.py` starts without errors | ✅ |
+| `curl http://localhost:8501/` | HTTP 200 |
+| Question input disabled before indexing | TODO — verify manually |
+| Index button disabled before upload | TODO — verify manually |
+| Q&A history accumulates across questions | TODO — verify manually |
+
+#### Checklist
+
+- [DONE] `streamlit_app.py` created at project root
+- [DONE] All 6 pipeline modules imported from `src/` — no inline reimplementation
+- [DONE] `st.session_state` used for `indexed`, `history`, `mistral_client`, `index_summary`
+- [DONE] Question input `disabled=True` until `st.session_state.indexed` is True
+- [DONE] Warning message displayed when not indexed (no crash on early submit)
+- [DONE] Spinner shown during indexing AND during answering separately
+- [DONE] Each answer shows sources as coloured badges (file · page grouped by quarter)
+- [DONE] History list: newest on top, each entry in a collapsible expander
+- [DONE] Server started: HTTP 200 confirmed at `http://localhost:8501`
