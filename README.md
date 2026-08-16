@@ -151,3 +151,57 @@ Model: `mistral-embed` (imported via `EMBEDDING_MODEL` constant — same for ind
 - [DONE] Embedding dimension confirmed as 1024
 - [DONE] Progress lines printed for each batch
 - [DONE] Script does NOT persist to ChromaDB (persistence is Stage 5)
+
+---
+
+### Stage 5 — Store Chunks + Embeddings in ChromaDB
+
+**Objective:** Persist the 143 embedded chunks into a ChromaDB collection with metadata (`file`, `page`, `quarter`). Use deterministic chunk IDs so that re-running indexing overwrites rows instead of duplicating them. Prove that data survives a process restart.
+
+Scripts: `src/store.py` (full pipeline + upsert) · `src/restart_test.py` (persistence verifier)
+
+#### Store configuration
+
+| Parameter | Value |
+|---|---|
+| Collection name | `cisco_financials` |
+| Persistence folder | `./chroma_db/` |
+| Similarity metric | cosine |
+| Chunk ID format | `<filename>__chunk_<00000>` |
+
+#### Quarter labels derived from filenames
+
+| Filename | Quarter label |
+|---|---|
+| Q1FY25-Press-Release.pdf | Q1 FY25 |
+| Q2FY25-Press-Release.pdf | Q2 FY25 |
+| Q3FY25-Press-Release.pdf | Q3 FY25 |
+
+#### Indexing results
+
+| Metric | Value |
+|---|---|
+| Pages loaded | 47 |
+| Chunks created | 143 |
+| Chunks upserted | 143 |
+| Collection total after upsert | 143 |
+| Embedding time | 4.4s |
+
+#### Persistence proof — `python src/restart_test.py`
+
+Both runs performed **after** a fresh `rm -rf chroma_db/` + full re-index, with the second run in a brand-new terminal session.
+
+| Run | Chunk count (pass 1) | Chunk count (pass 2) | Match? |
+|---|---|---|---|
+| Same-process reconnection | 143 | 143 | ✅ Yes |
+| After terminal restart (new process) | 143 | 143 | ✅ Yes |
+
+Both counts are written here explicitly — the two numbers being equal is the proof that ChromaDB persists data to disk and reads it back correctly across process boundaries.
+
+#### Checklist
+
+- [DONE] `python src/store.py` runs without errors
+- [DONE] All 143 chunks upserted with file + page + quarter metadata
+- [DONE] Chunk IDs are deterministic — re-running overwrites, not duplicates
+- [DONE] `python src/restart_test.py` passes within-process test (143 == 143)
+- [DONE] `python src/restart_test.py` passes cross-process restart test (143 == 143)
