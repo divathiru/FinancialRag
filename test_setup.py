@@ -1,7 +1,7 @@
 """
 test_setup.py — Stage 0 connectivity check.
 
-Loads OPENAI_API_KEY from .env, makes one minimal API call
+Loads MISTRAL_API_KEY from .env, makes one minimal API call
 (list available models), and prints the raw response so you
 can confirm the key works before proceeding.
 """
@@ -14,22 +14,22 @@ import os
 # or the current directory if run from the project root).
 load_dotenv()
 
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("MISTRAL_API_KEY")
 if not api_key:
-    print("ERROR: OPENAI_API_KEY not found. Did you create a .env file?")
+    print("ERROR: MISTRAL_API_KEY not found. Did you create a .env file?")
     sys.exit(1)
 
 print(f"API key loaded: {api_key[:8]}...{api_key[-4:]}  (first 8 / last 4 chars shown)")
 
 try:
-    from openai import OpenAI
+    from mistralai.client.sdk import Mistral
 except ImportError:
-    print("ERROR: openai package not installed. Run: pip install -r requirements.txt")
+    print("ERROR: mistralai package not installed. Run: pip install -r requirements.txt")
     sys.exit(1)
 
-client = OpenAI(api_key=api_key)
+client = Mistral(api_key=api_key)
 
-print("\nCalling OpenAI API — listing available models ...\n")
+print("\nCalling Mistral AI API — listing available models ...\n")
 models = client.models.list()
 
 # Print first 10 model IDs so the output stays readable
@@ -39,4 +39,4 @@ print("First 10 model IDs:")
 for mid in sorted(model_ids)[:10]:
     print(f"  {mid}")
 
-print("\n✅ Setup check PASSED — OpenAI API is reachable and key is valid.")
+print("\n✅ Setup check PASSED — Mistral AI API is reachable and key is valid.")

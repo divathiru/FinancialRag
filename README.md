@@ -4,7 +4,7 @@ A Retrieval-Augmented Generation (RAG) system that answers questions over
 Cisco's FY2025 quarterly earnings press releases (Q1–Q3, fiscal year ending
 July 31).
 
-**Tech stack:** Python 3.10+ · OpenAI (GPT-4o + text-embedding-3-small) ·
+**Tech stack:** Python 3.10+ · Mistral AI (mistral-embed) ·
 ChromaDB · Streamlit
 
 ---
@@ -18,7 +18,7 @@ ChromaDB · Streamlit
 ├── chroma_db/          # Persistent vector store (not committed, regenerated)
 ├── test_setup.py       # Stage 0 connectivity check
 ├── requirements.txt
-├── .env.example        # Copy to .env and fill in OPENAI_API_KEY
+├── .env.example        # Copy to .env and fill in MISTRAL_API_KEY
 └── README.md
 ```
 
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 # 3. Configure your API key
 cp .env.example .env
-# Edit .env and set OPENAI_API_KEY=sk-...
+# Edit .env and set MISTRAL_API_KEY=...
 
 # 4. Run the Stage 0 connectivity check
 python test_setup.py
@@ -46,7 +46,7 @@ python test_setup.py
 
 ### Stage 0 — Workspace Setup
 
-**Objective:** Scaffold the project and confirm OpenAI API connectivity.
+**Objective:** Scaffold the project and confirm Mistral AI API connectivity.
 
 Checklist:
 - [] `requirements.txt` created
@@ -131,3 +131,23 @@ Checklist:
 - [Done] Chunk size decision recorded above with justification
 
 ![alt text](<Screenshot from 2026-08-13 09-25-39.png>) ![alt text](<Screenshot from 2026-08-13 09-25-52.png>)
+
+---
+
+### Stage 4 — Embedding
+
+**Objective:** Embed all 143 chunks using `mistral-embed` in batches. Establish `EMBEDDING_MODEL` as the single shared constant used for both indexing and query-time embedding.
+
+Script: `src/embed.py`  
+Model: `mistral-embed` (imported via `EMBEDDING_MODEL` constant — same for indexing AND queries)
+
+| Metric | Value |
+|---|---|
+| Total chunks embedded | 143 |
+| Embedding dimension | 1024 |
+| Time taken (s) | 4.5s |
+    
+- [DONE] `python src/embed.py` runs without errors
+- [DONE] Embedding dimension confirmed as 1024
+- [DONE] Progress lines printed for each batch
+- [DONE] Script does NOT persist to ChromaDB (persistence is Stage 5)
