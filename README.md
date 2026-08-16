@@ -275,3 +275,63 @@ Ranks 1–3 are Q2 chunks — the quarter-fix is working.
 - [DONE] Quarter-fix applied in `store.py` — `[Cisco Q1 FY25]` prefix baked into vectors
 - [DONE] Re-indexed after quarter-fix: 143 upserted, 143 total, 0 duplicates
 - [DONE] Smoke test confirms quarter-specific queries retrieve correct quarter first
+
+---
+
+### Stage 7 — Generation
+
+**Objective:** Build a four-part grounded prompt and call Mistral at temperature=0.2 to generate answers that cite period and unit for every figure. The model sees only the retrieved chunks — no general knowledge.
+
+Script: `src/generate.py`  
+Model: `mistral-small-latest`  
+Temperature: `0.2`
+
+#### Prompt structure
+
+| Part | Content |
+|---|---|
+| 1. System instruction | Role + 5 strict grounding rules |
+| 2. Source passages | Retrieved chunks, each labeled `[N] Quarter \| file  page N` |
+| 3. User question | `QUESTION: <text>` |
+| 4. Answer instruction | Explicit reminder to include unit and time period for every figure |
+
+#### System prompt rules (enforced on every call)
+
+1. Answer ONLY from the provided source passages — no general Cisco knowledge
+2. If the passages don't contain the answer, say so plainly — no guessing
+3. Every figure must include its unit **and** time period (e.g. `$14.0 billion for Q2 FY25`)
+4. When comparing quarters, label every number with its quarter explicitly
+5. Keep answers concise and factual — no commentary or opinion
+
+#### End-to-end test
+
+**Question:** *What was Cisco's total revenue for Q2 FY25, and how did it compare to Q2 FY24?*
+
+**Chunks given to model (top 5):**
+
+| Rank | Quarter | File | Page | Distance |
+|---|---|---|---|---|
+| 1 | Q2 FY25 | Q2FY25-Press-Release.pdf | 3 | 0.0859 |
+| 2 | Q3 FY25 | Q3FY25-Press-Release.pdf | 3 | 0.0952 |
+| 3 | Q2 FY25 | Q2FY25-Press-Release.pdf | 5 | 0.0995 |
+| 4 | Q2 FY25 | Q2FY25-Press-Release.pdf | 3 | 0.1001 |
+| 5 | Q1 FY25 | Q1FY25-Press-Release.pdf | 3 | 0.1006 |
+
+**Generated answer:**
+
+> Cisco's total revenue for Q2 FY25 was **$14.0 billion**, up 9% year-over-year compared to Q2 FY24.
+
+**Fact trace:**
+- `$14.0 billion` ← chunk [1]: *"Total revenue was $14.0 billion, up 9%"*
+- `up 9% year-over-year` ← same chunk [1]
+- Verified by chunk [3] income statement: `Total revenue: 13,991` (Q2 FY25) vs `12,791` (Q2 FY24) — in millions → $14.0B vs $12.8B, ≈9.4% growth ✅
+
+#### Checklist
+
+- [DONE] `src/generate.py` written with `answer(question, retrieved_chunks)`
+- [DONE] System prompt enforces all 5 grounding rules
+- [DONE] Temperature set to 0.2
+- [DONE] `build_context()` exported — app layer can inspect exact context sent to model
+- [DONE] `debug=True` prints exact prompt before API call
+- [DONE] End-to-end test run: answer is factually correct and traceable to source chunks
+- [DONE] `_print_side_by_side()` helper enables chunk-vs-answer fact checking
