@@ -205,3 +205,73 @@ Both counts are written here explicitly — the two numbers being equal is the p
 - [DONE] Chunk IDs are deterministic — re-running overwrites, not duplicates
 - [DONE] `python src/restart_test.py` passes within-process test (143 == 143)
 - [DONE] `python src/restart_test.py` passes cross-process restart test (143 == 143)
+
+---
+
+### Stage 6 — Retrieval
+
+**Objective:** Embed user questions with the same model used for indexing, query ChromaDB, and return the top-k chunks with full metadata. Add a debug mode that makes retrieval quality visible before any generated answer is trusted. Apply the quarter-fix so quarter identity is part of the semantic vector.
+
+Scripts: `src/retrieve.py` (retrieval module + interactive CLI) · `src/store.py` updated with quarter-fix
+
+#### Quarter-fix (applied to store.py before re-indexing)
+
+Each chunk's text is prefixed with its source label before embedding:
+
+```
+[Cisco Q1 FY25] Revenue for the quarter was $13.8B ...
+```
+
+**Why this matters:** without the prefix, `"Q2"` only exists in the `metadata` dict — a field the embedding model never sees. A question like *"What was Q2 revenue?"* had no semantic signal to distinguish Q1 from Q2 chunks. With the prefix baked into the vector, quarter-aware queries retrieve the correct quarter first.
+
+The same prefixed text is stored as the ChromaDB document, so the LLM also receives the quarter label in its context window.
+
+#### Re-index results after quarter-fix
+
+| Metric | Value |
+|---|---|
+| Chunks upserted | 143 |
+| Collection total after upsert | 143 |
+| Duplicates created | 0 (upsert dedup) |
+| Embedding time | 7.9s |
+
+#### Retrieval design
+
+| Parameter | Value |
+|---|---|
+| Embedding model | `mistral-embed` (same constant as indexing) |
+| Similarity metric | cosine distance |
+| Default top_k | 4 |
+| Debug mode | `retrieve(..., debug=True)` |
+
+#### Debug output format (every retrieved chunk)
+
+```
+[1] Q2 FY25  |  Q2FY25-Press-Release.pdf  p.3  |  dist=0.1846
+     [Cisco Q2 FY25] Financial Summary ... Revenue ...
+```
+
+Fields printed: rank · quarter · filename · page · cosine distance · first 150 chars of text.
+
+#### Smoke test — quarter-specific retrieval
+
+Query: *"What was the total revenue in Q2?"*
+
+| Rank | Quarter | File | Page | Distance |
+|---|---|---|---|---|
+| 1 | Q2 FY25 | Q2FY25-Press-Release.pdf | 3 | 0.1846 |
+| 2 | Q2 FY25 | Q2FY25-Press-Release.pdf | 3 | 0.1861 |
+| 3 | Q2 FY25 | Q2FY25-Press-Release.pdf | 6 | 0.1861 |
+| 4 | Q1 FY25 | Q1FY25-Press-Release.pdf | 6 | 0.1932 |
+
+Ranks 1–3 are Q2 chunks — the quarter-fix is working.
+
+#### Checklist
+
+- [DONE] `src/retrieve.py` written with `retrieve(question, top_k=4, debug=False)`
+- [DONE] Question embedded using `EMBEDDING_MODEL` — same constant as indexing
+- [DONE] `embed_question()` exported for use by the app layer
+- [DONE] Debug mode prints file, page, quarter, distance, and first 150 chars per chunk
+- [DONE] Quarter-fix applied in `store.py` — `[Cisco Q1 FY25]` prefix baked into vectors
+- [DONE] Re-indexed after quarter-fix: 143 upserted, 143 total, 0 duplicates
+- [DONE] Smoke test confirms quarter-specific queries retrieve correct quarter first

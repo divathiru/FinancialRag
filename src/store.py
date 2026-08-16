@@ -129,6 +129,27 @@ def get_collection(persist_dir: Path | str = CHROMA_DIR):
     return collection
 
 
+def make_prefixed_text(chunk: dict) -> str:
+    """
+    Prefix a chunk's text with its quarter label.
+
+    Example output: "[Cisco Q1 FY25] Revenue for the quarter was ..."
+
+    Why this matters (the quarter-fix)
+    -----------------------------------
+    Without the prefix, the quarter is only in *metadata*, which is never
+    seen by the embedding model.  That means a question like
+    "What was Q2 revenue?" cannot distinguish between a Q1 and Q2 chunk
+    on semantic grounds alone.
+
+    By baking the label into the embedded text, the quarter becomes part
+    of the semantic vector.  The same prefixed text is stored as the
+    ChromaDB document, so the LLM receives the label in retrieved context.
+    """
+    quarter = derive_quarter(chunk["file"])
+    return f"[Cisco {quarter}] {chunk['text']}"
+
+
 def store_chunks(
     chunks: list[dict],
     vectors: list[list[float]],
@@ -143,7 +164,8 @@ def store_chunks(
         Output of chunk.chunk_pages() — each dict has "file", "page",
         "chunk_index", "text".
     vectors : list[list[float]]
-        Aligned embedding vectors from embed.embed_chunks().
+        Aligned embedding vectors from embed_prefixed_chunks() (i.e. the
+        vectors were computed on the quarter-prefixed text, not raw text).
         Must satisfy len(vectors) == len(chunks).
     persist_dir : Path | str
         Directory for the persistent ChromaDB store.  Default: ./chroma_db.
@@ -158,7 +180,8 @@ def store_chunks(
     - Uses upsert() so re-running is safe: existing chunks are overwritten,
       not duplicated.
     - Each chunk gets a stable ID from make_chunk_id(filename, chunk_index).
-    - Metadata stored per chunk: {file, page, quarter}.
+    - The stored document is the PREFIXED text ("[Cisco Q1 FY25] ..."),
+      matching what was embedded.  Metadata: {file, page, quarter}.
     """
     if len(vectors) != len(chunks):
         raise ValueError(
@@ -173,14 +196,16 @@ def store_chunks(
     metadatas  = []
 
     for chunk, vector in zip(chunks, vectors):
+        quarter = derive_quarter(chunk["file"])
         ids.append(make_chunk_id(chunk["file"], chunk["chunk_index"]))
         embeddings.append(vector)
-        documents.append(chunk["text"])
+        # Store the prefixed text — matches what was embedded
+        documents.append(make_prefixed_text(chunk))
         metadatas.append(
             {
                 "file":    chunk["file"],
                 "page":    chunk["page"],
-                "quarter": derive_quarter(chunk["file"]),
+                "quarter": quarter,
             }
         )
 
@@ -234,9 +259,15 @@ def main() -> None:
         print(f"    {f}  →  {derive_quarter(f)}")
 
     # ── 3. Embed ─────────────────────────────────────────────────────────────
+    # Quarter-fix: embed the PREFIXED version of each chunk so that quarter
+    # identity becomes part of the semantic vector, not just a metadata tag.
     print(f"\nStep 3 — Embedding ({len(chunks)} chunks via {EMBEDDING_MODEL}) …")
+    print("  (using quarter-prefixed text, e.g. '[Cisco Q1 FY25] ...')")
+    prefixed_chunks = [
+        {**c, "text": make_prefixed_text(c)} for c in chunks
+    ]
     t0 = time.time()
-    vectors = embed_chunks(chunks)
+    vectors = embed_chunks(prefixed_chunks)
     elapsed = time.time() - t0
     print(f"  Done in {elapsed:.1f}s  (dim={len(vectors[0])})")
 
